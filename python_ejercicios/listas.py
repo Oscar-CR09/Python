@@ -67,3 +67,16 @@ print(f'Ordenar lista: {lista_listas}')
 
 # sorted built-in
 #help(sorted)
+
+nombres1=['Juan carlos ', 'Karla','Pedro','Esperanza']
+nombres1 = sorted(nombres1)
+print(nombres1)
+#ordenar de modo desendente 
+nombres1 = sorted(nombres1,reverse=True)
+print(nombres1)
+#ordenar por la cantidad de caracter largo
+nombres1 = sorted(nombres1, key=len)
+print(nombres1)
+#built-in reversed
+nombres1 = reversed(nombres1)
+print(list(nombres1))
