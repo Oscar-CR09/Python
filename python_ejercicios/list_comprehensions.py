@@ -46,3 +46,24 @@ lista_impares = []
 
 print(f'Pares: {lista_pares}')
 print(f'impares: {lista_impares}')
+
+#lista de lista
+
+lista_listas=[[1,2,3],[4,5,6],[7,8,9,10]]
+#convertimos la lista de lista en una sola 
+lista_simple = [valor for sublista in lista_listas for valor in sublista]
+print(f'Lista simple: {lista_simple}')
+#ahora creamos una lista de numeros pares a partir de la lista de listas
+#sin list comprehension, ciclos for anidados 
+lista_pares = []
+for sublista in lista_listas:
+    for valor in sublista:
+        if valor%2==0:
+            lista_pares.append(valor)
+print(f'lista pares: {lista_pares}')
+
+#con list comprehension en una sola linea de codigo
+#no es necesario separar las lineas, solo es para mejor lectura de codigo
+lista_pares = []
+lista_pares = [valor for sublista in lista_listas for valor in sublista if valor%2==0]
+print(f'lista pares: {lista_pares}')
