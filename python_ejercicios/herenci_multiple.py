@@ -78,3 +78,13 @@ print(lista_enteros_ordenada)
 print(ListaEnterosOrdenada.__base__)
 #concepto  (mro) method ressolition order
 print(ListaEnterosOrdenada.__mro__)
+
+# isinstace
+print('Es entero',isinstance(10, int))
+print('Es una cadena ',isinstance('hola', str))
+print('es una lista ordenada ',isinstance(lista_enteros_ordenada, ListaEnterosOrdenada))
+print('Es lista entero? ',isinstance(lista_enteros_ordenada, ListaEnteros))
+print('es una lista ordenada',isinstance(lista_enteros_ordenada, ListaOrdenada))
+print('Es lista simple ',isinstance(lista_enteros_ordenada, ListaSimple ))
+print('Es object? ', isinstance( lista_enteros_ordenada, object ))
+print('Es de varios tipos ? ',isinstance(lista_enteros_ordenada, (ListaEnteros,ListaSimple)))
