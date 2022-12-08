@@ -31,7 +31,24 @@ def decorador_repr(cls):
 
     #crer el metodo repr dinamicamente
     def metodo_repr(self):
-        return f'resultado de ejecutar metodo repr '
+        #obtenemos el nombre de la clase dinamicamente 
+        nombre_clase = self.__class__.__name__
+        print(f'Nombre clase: {nombre_clase}')
+        #obtenemos los nombres de las propiedades y sus valores dinamicamente
+
+        #exprecion generadora, crear nombre_atr=valor_atr
+        generadora_arg = (f'{nombre}={getattr(self, nombre)!r}' for nombre in parametros_init)
+        #lista del generador 
+        lista_arg = list(generadora_arg)
+        print(f'Lista del generador: {lista_arg}')
+        #creamos la cadena a partir de la lista de argumentos 
+        argumentos = ',  '.join(lista_arg)
+        print(f'Argumentos del metodo repr: {argumentos}')
+        #creamos la forma del metodo __repr__, sin su nombre
+        resultado_emtodo_repr=f'{nombre_clase} ({argumentos})'
+        print(f'Resultado del ejecutar metodo repr: {resultado_emtodo_repr}')
+
+        return resultado_emtodo_repr
 
     #agregar dinamicamente el metodo repr a nuestra clase
     setattr(cls, '__repr__', metodo_repr)
@@ -41,10 +58,11 @@ def decorador_repr(cls):
 
 @decorador_repr
 class Persona :
-    def __init__(self, nombre, apellido):
+    def __init__(self, nombre, apellido,edad):
         print('2. Se ejecuta el inicializador')
         self._nombre = nombre
         self._apellido = apellido
+        self._edad = edad
 
     @property
     def nombre(self):
@@ -54,9 +72,21 @@ class Persona :
     def apellido(self):
         return self._apellido
 
+    @property
+    def edad(self):
+        return self._edad
+
 #    def __repr__(self):
 #        return f'Persona({self.nombre}, {self._apellido} )'
 
 
-persona1 = Persona('juan', 'perez')
+persona1 = Persona('juan', 'perez',28)
 print(persona1)
+persona2 =Persona('Karla', 'Gomez',30)
+print(persona2)
+
+#tiene los metodos de propiedad nombre apellido, repr
+print(dir(Persona))
+#tiene el metodo repr sobreescrito
+#codigo_repr = inspect.getsource(persona1.__repr__)
+#print(codigo_repr)
